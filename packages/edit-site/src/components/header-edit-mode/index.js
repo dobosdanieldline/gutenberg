@@ -2,12 +2,14 @@
  * WordPress dependencies
  */
 import { privateApis as editorPrivateApis } from '@wordpress/editor';
-import { useSelect } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
+import { Button } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
 import SiteEditorMoreMenu from './more-menu';
+import SiteIcon from '../site-icon';
 import { unlock } from '../../lock-unlock';
 import SaveButton from '../save-button';
 import { isPreviewingTheme } from '../../utils/is-previewing-theme';
@@ -17,7 +19,7 @@ import {
 } from '../editor-canvas-container';
 import { store as editSiteStore } from '../../store';
 
-const { Header: EditorHeader } = unlock( editorPrivateApis );
+const { BackButton, Header: EditorHeader } = unlock( editorPrivateApis );
 
 function Header( { setEntitiesSavedStatesCallback } ) {
 	const _isPreviewingTheme = isPreviewingTheme();
@@ -29,6 +31,7 @@ function Header( { setEntitiesSavedStatesCallback } ) {
 			).getEditorCanvasContainerView(),
 		};
 	}, [] );
+	const { setCanvasMode } = unlock( useDispatch( editSiteStore ) );
 
 	return (
 		<>
@@ -46,6 +49,14 @@ function Header( { setEntitiesSavedStatesCallback } ) {
 						: undefined
 				}
 			/>
+			<BackButton>
+				<Button
+					className="edit-site-layout__view-mode-toggle"
+					onClick={ () => setCanvasMode( 'view' ) }
+				>
+					<SiteIcon className="edit-site-layout__view-mode-toggle-icon" />
+				</Button>
+			</BackButton>
 			<SiteEditorMoreMenu />
 		</>
 	);

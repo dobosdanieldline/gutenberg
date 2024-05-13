@@ -12,7 +12,17 @@
 	}
 }
 
+/* stylelint-disable */
+::view-transition-old(frame),
+::view-transition-new(frame) {
+  animation-duration: 0;
+}
+/* stylelint-enable */
+
 .edit-site-visual-editor {
+	/* stylelint-disable */
+	view-transition-name: frame;
+	/* stylelint-enable */
 	height: 100%;
 	background-color: $gray-300;
 

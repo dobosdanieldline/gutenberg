@@ -12,7 +12,7 @@
 	}
 }
 
-/* stylelint-disable */
+/* stylelint-disable -- Disable reason: View Transitions not supported properly by stylelint. */
 ::view-transition-old(frame),
 ::view-transition-new(frame) {
   animation-duration: 0;
@@ -20,7 +20,7 @@
 /* stylelint-enable */
 
 .edit-site-visual-editor {
-	/* stylelint-disable */
+	/* stylelint-disable -- Disable reason: View Transitions not supported properly by stylelint. */
 	view-transition-name: frame;
 	/* stylelint-enable */
 	height: 100%;
